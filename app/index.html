@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="AngularApp">
+  <head lang="en">
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular-TodoList</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="./css/main.css"/>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 main-block">
+          <!-- ng-outlet, to render List inside-->
+          <ng-outlet></ng-outlet>
+        </div>
+        <div class="col-md-3 col-md-offset-1 sidebar-block">
+          <side-bar></side-bar>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- scripts -->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-component-router/angular_1_router.js"></script>
+    <script src="bower_components/angular-component-router/ng_route_shim.js"></script>
+    <script src="app.js"></script>
+    <script src="js/components/hero-list.component.js"></script>
+    <script src="js/services/hero-list.service.js"></script>
+    <script src="js/components/superHeroes.component.js"></script>
+    <script src="js/components/richHeroes.component.js"></script>
+    <script src="js/components/geniusHeroes.component.js"></script>
+    <script src="js/components/sidebar.component.js"></script>
+
+    <!--<script src="./js/bundled.js"></script>-->
+
+
+  </body>
+</html>

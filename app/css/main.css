@@ -1,0 +1,83 @@
+/* css */
+
+body {
+    margin-top: 70px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+input {
+    outline: none;
+}
+
+a {
+    text-decoration: underline;
+}
+
+.name-input {
+    width: 300px;
+    border: 2px solid black;
+}
+
+.main-block {
+    border: 2px solid black;
+    height: 500px;
+    overflow: auto;
+}
+
+.sidebar-block {
+    border: 2px solid black;
+    height: 500px;
+}
+
+.add-button {
+    width: 70px;
+    height: 25px;
+    background-color: gainsboro;
+    border: 2px solid black;
+    border-radius: 7px;
+}
+
+.sidebar-links {
+    text-decoration: none;
+    color: black;
+}
+
+.sidebar-links:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.sidebar-links:focus {
+    text-decoration: none;
+    color: black;
+}
+
+.current {
+    text-decoration: none;
+    color: black;
+}
+
+.current:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.current:focus {
+    text-decoration: none;
+    color: black;
+}
+
+
+.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    color: grey;
+}
+
+.checkbox-position {
+    padding-left: 20px;
+}

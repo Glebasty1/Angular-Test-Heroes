@@ -1,0 +1,19 @@
+{
+  "name": "angular-gulp-browserify",
+  "version": "0.0.0",
+  "authors": [
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.6",
+    "bootstrap": "~3.2.0",
+    "jshint": "^2.9.1"
+  }
+}
