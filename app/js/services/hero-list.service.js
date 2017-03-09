@@ -1,6 +1,5 @@
 (function() {
     'use strict';
-
 angular.module("AngularApp")
     .service('HeroService', ['$location', HeroService]);
 
@@ -30,6 +29,7 @@ function HeroService($location) {
         return heroesList;
     };
 
+    //method for adding heroes to the table
     self.addHero = function (heroName, isSuper, isRich, isGenius) {
         if (!heroName) {
             return 0;
@@ -40,6 +40,7 @@ function HeroService($location) {
         $location.path( "/" );
     };
 
+    //method for removing  heroes from the table
     self.removeHero = function (name) {
         var index = -1;
         var comArr = heroesList;
@@ -57,6 +58,7 @@ function HeroService($location) {
         self.syncWithStorage();
     };
 
+    //method for counting super-power heroes
     self.superPowerCount = function () {
         var remainingCount = 0;
 
@@ -66,6 +68,7 @@ function HeroService($location) {
         return remainingCount;
     };
 
+    //method for counting rich heroes
     self.richCount = function () {
         var remainingCount = 0;
 
@@ -76,6 +79,7 @@ function HeroService($location) {
         return remainingCount;
     };
 
+    //method for counting genius heroes
     self.geniusCount = function () {
         var remainingCount = 0;
 
