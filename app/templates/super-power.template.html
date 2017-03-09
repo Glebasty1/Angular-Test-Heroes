@@ -1,37 +1,37 @@
-<form ng-submit="addHero(name, isSuper, isRich, isGenius)" novalidate>
+<form ng-submit="$ctrl.addHero($ctrl.name, $ctrl.isSuper, $ctrl.isRich, $ctrl.isGenius)" novalidate>
     <h1>Add new person</h1>
-    <input type="text" class="name-input"  placeholder="Name" ng-model="name" required>
-    <input type="checkbox" ng-model="isSuper">Super power
-    <input type="checkbox" ng-model="isRich">Rich
-    <input type="checkbox" ng-model="isGenius">Genius
-    <input type="submit" class="add-button" value="Add" >
+    <input type="text" class="name-input"  placeholder="Name" ng-model="$ctrl.name" required>
+    <input type="checkbox" ng-model="$ctrl.isSuper">Super power
+    <input type="checkbox" ng-model="$ctrl.isRich">Rich
+    <input type="checkbox" ng-model="$ctrl.isGenius">Genius
+    <input type="submit" class="add-button" value="Add">
 </form>
 
-<div ng-show="tableShow">
+<div ng-show="$ctrl.tableShow">
     <table class="table table-striped">
         <thead>
         <tr>
-            <th ng-click="orderBy('name')"><span class="glyphicon glyphicon-chevron-down"></span>Name</th>
-            <th ng-click="orderBy('name')"><span class="glyphicon glyphicon-chevron-down"></span>SuperPower</th>
-            <th ng-click="orderBy('name')"><span class="glyphicon glyphicon-chevron-down"></span>Rich</th>
-            <th ng-click="orderBy('name')"><span class="glyphicon glyphicon-chevron-down"></span>Genius</th>
+            <th ng-click="$ctrl.orderBy('name')"><span class="glyphicon glyphicon-chevron-down"></span>Name</th>
+            <th ng-click="$ctrl.orderBy('name')"><span class="glyphicon glyphicon-chevron-down"></span>SuperPower</th>
+            <th ng-click="$ctrl.orderBy('name')"><span class="glyphicon glyphicon-chevron-down"></span>Rich</th>
+            <th ng-click="$ctrl.orderBy('name')"><span class="glyphicon glyphicon-chevron-down"></span>Genius</th>
             <th><span class="glyphicon glyphicon-chevron-down"></span>Delete</th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="hero in heroesList | orderBy: orderingBy | filter: {superPower: true} track by $index">
+        <tr ng-repeat="hero in $ctrl.heroesList | orderBy: $ctrl.orderingBy | filter: {superPower: true} track by $index">
             <td>{{hero.name}}</td>
-            <td><input type="checkbox" ng-model="hero.superPower" ng-change="sync()"></td>
-            <td><input type="checkbox" ng-model="hero.rich" ng-change="sync()"></td>
-            <td><input type="checkbox" ng-model="hero.genius" ng-change="sync()"></td>
+            <td><input type="checkbox" ng-model="hero.superPower" ng-change="$ctrl.sync()"></td>
+            <td><input type="checkbox" ng-model="hero.rich" ng-change="$ctrl.sync()"></td>
+            <td><input type="checkbox" ng-model="hero.genius" ng-change="$ctrl.sync()"></td>
             <td>
-                <span ng-if="!clicked" ng-click="confirmToggle()"  class="glyphicon glyphicon-remove"></span>
-                <span ng-if="clicked">Are you sure (<span ng-click="removeHero(hero.name)">Yes</span> <span ng-click="confirmToggle()">No</span>)</span>
+                <span data-value="$index" ng-click="$ctrl.confirmToggle($index)" ng-show="!$ctrl.clicked" class="glyphicon glyphicon-remove"></span>
+                <span data-value="$index" ng-show="$ctrl.clicked" >Are you sure (<span ng-click="$ctrl.removeHero(hero.name)">Yes</span> <span ng-click="$ctrl.confirmToggle($index)">No</span>)</span>
             </td>
         </tr>
         </tbody>
     </table>
-    <a ng-class="{ disabled : checkLinkSuper()}" class="current" href="/super">super</a>|
-    <a ng-class="{ disabled : checkLinkRich()} "href="/rich">rich</a>|
-    <a ng-class="{ disabled : checkLinkGenius()}" href="/genius">genius</a>
+    <a ng-class="{ disabled : $ctrl.checkLinkSuper()}" class="current" href="/super">super</a>|
+    <a ng-class="{ disabled : $ctrl.checkLinkRich()} "href="/rich">rich</a>|
+    <a ng-class="{ disabled : $ctrl.checkLinkGenius()}" href="/genius">genius</a>
 </div>
