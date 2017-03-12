@@ -1,9 +1,12 @@
 <form ng-submit="$ctrl.addHero($ctrl.name, $ctrl.isSuper, $ctrl.isRich, $ctrl.isGenius)" novalidate>
     <h1>Add new person</h1>
     <input type="text" class="name-input" placeholder="Name" ng-model="$ctrl.name" required>
-    <input class="checkbox-position" type="checkbox" ng-model="$ctrl.isSuper">Super power
-    <input class="checkbox-position" type="checkbox" ng-model="$ctrl.isRich">Rich
-    <input class="checkbox-position" type="checkbox" ng-model="$ctrl.isGenius">Genius
+    <input class="checkbox-position" type="checkbox" ng-model="$ctrl.isSuper" id="super-power-checkbox">
+    <label for="super-power-checkbox">Super power</label>
+    <input class="checkbox-position" type="checkbox" ng-model="$ctrl.isRich" id="rich-checkbox">
+    <label for="rich-checkbox">Rich</label>
+    <input class="checkbox-position" type="checkbox" ng-model="$ctrl.isGenius" id="genius-checkbox">
+    <label for="genius-checkbox">Genius</label>
     <input type="submit" class="add-button" value="Add">
 </form>
 
@@ -25,13 +28,13 @@
         <td><input type="checkbox" ng-model="hero.rich" ng-change="$ctrl.sync()"></td>
         <td><input type="checkbox" ng-model="hero.genius" ng-change="$ctrl.sync()"></td>
         <td>
-            <span data-value="$index" ng-click="$ctrl.confirmToggle($index)" ng-show="!$ctrl.clicked" class="glyphicon glyphicon-remove"></span>
-            <span data-value="$index" ng-show="$ctrl.clicked" >Are you sure (<span ng-click="$ctrl.removeHero(hero.name)">Yes</span> <span ng-click="$ctrl.confirmToggle($index)">No</span>)</span>
+            <span ng-click="$ctrl.confirmToggle($index)" ng-if="!hero.clicked" class="glyphicon glyphicon-remove"></span>
+            <span ng-if="hero.clicked" >Are you sure (<span ng-click="$ctrl.removeHero(hero.name)">Yes</span> <span ng-click="$ctrl.confirmToggle($index)">No</span>)</span>
         </td>
     </tr>
     </tbody>
 </table>
-        <a ng-class="{ disabled : $ctrl.checkLinkSuper()}" href="/super">super</a>|
-        <a ng-class="{ disabled : $ctrl.checkLinkRich()}" href="/rich">rich</a>|
-        <a ng-class="{ disabled : $ctrl.checkLinkGenius()}" href="/genius">genius</a>
+        <a ng-class="{ disabled : $ctrl.checkLinkByType('superPower')}" href="/super">super</a>|
+        <a ng-class="{ disabled : $ctrl.checkLinkByType('rich')}" href="/rich">rich</a>|
+        <a ng-class="{ disabled : $ctrl.checkLinkByType('genius')}" href="/genius">genius</a>
 </div>

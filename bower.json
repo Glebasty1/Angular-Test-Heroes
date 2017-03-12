@@ -1,8 +1,7 @@
 {
   "name": "angular-gulp-browserify",
   "version": "0.0.0",
-  "authors": [
-  ],
+  "authors": [],
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -14,6 +13,7 @@
   "dependencies": {
     "angular": "^1.5.6",
     "bootstrap": "~3.2.0",
-    "jshint": "^2.9.1"
+    "jshint": "^2.9.1",
+    "angular-component-router": "^0.2.1"
   }
 }

@@ -5,7 +5,6 @@ angular.module("AngularApp")
 
 function HeroService($location) {
     var self = this;
-
     var heroesList = [];
 
     //initialization our tasks to local storage
@@ -17,11 +16,19 @@ function HeroService($location) {
         } else {
             heroesList = JSON.parse(tasksFromStorage);
         }
+        self.refreshStatistics();
     }
+
+    self.statistics = {
+        superPower: 0,
+        rich: 0,
+        genius: 0
+    };
 
     //method for updating our local storage
     self.syncWithStorage = function() {
         localStorage.setItem('heroesList', JSON.stringify(heroesList));
+        self.refreshStatistics();
     };
 
 
@@ -58,35 +65,22 @@ function HeroService($location) {
         self.syncWithStorage();
     };
 
-    //method for counting super-power heroes
-    self.superPowerCount = function () {
-        var remainingCount = 0;
+    self.getCountByType = function (type) {
+      var remainingCount = 0;
 
-        heroesList.forEach(function (hero) {
-            remainingCount += hero.superPower ? 1 : 0;
-        });
-        return remainingCount;
+      heroesList.forEach(function (hero) {
+        remainingCount += hero[type] ? 1 : 0;
+      });
+      return remainingCount;
     };
 
-    //method for counting rich heroes
-    self.richCount = function () {
-        var remainingCount = 0;
+    self.refreshStatistics = function () {
+      for (var prop in self.statistics) {
+          if (self.statistics.hasOwnProperty(prop)) {
+              self.statistics[prop] = self.getCountByType(prop);
+          }
+      }
 
-        heroesList.forEach(function (hero) {
-            remainingCount += hero.rich ? 1 : 0;
-        });
-
-        return remainingCount;
-    };
-
-    //method for counting genius heroes
-    self.geniusCount = function () {
-        var remainingCount = 0;
-
-        heroesList.forEach(function (hero) {
-            remainingCount += hero.genius ? 1 : 0;
-        });
-        return remainingCount;
     };
 
     init();
